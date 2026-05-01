@@ -1,0 +1,114 @@
+{
+  "project_name": "ق stones",
+  "theme": "dark",
+  "archetype": "5 (Jewel & Luxury) + 1 (Organic & Earthy) Fusion",
+  "mood": "Luxury editorial meets industrial B2B credibility. Warm, grounded, authoritative, and textural.",
+  "colors": {
+    "background_base": "#0A0909",
+    "background_surface": "#141212",
+    "background_elevated": "#1C1918",
+    "primary": "#E07A5F",
+    "primary_hover": "#F08B70",
+    "text_primary": "#F4F1EB",
+    "text_secondary": "#A8A19F",
+    "border": "#2E2A28",
+    "accent_gold": "#B0966A"
+  },
+  "typography": {
+    "headings": {
+      "family": "Cormorant Garamond, serif",
+      "weights": ["light", "regular", "semibold"],
+      "usage_rules": "Large scale, tight tracking (tracking-tighter) for H1. Used for all main editorial titles."
+    },
+    "body": {
+      "family": "IBM Plex Sans, sans-serif",
+      "weights": ["regular", "medium"],
+      "usage_rules": "Clean, highly legible for product descriptions and B2B data."
+    },
+    "mono": {
+      "family": "IBM Plex Mono, monospace",
+      "weights": ["regular"],
+      "usage_rules": "Used for technical data, SKUs, RFQ form labels, and overlines. Small size, uppercase, wide tracking (tracking-[0.2em])."
+    },
+    "logo": {
+      "family": "system-ui, -apple-system, sans-serif",
+      "styling": "Arabic glyph 'ق' prominently displayed next to 'stones' in Cormorant Garamond. Bilingual visual feel. Iconic and intentional."
+    }
+  },
+  "spacing_and_layout": {
+    "strategy": "Generous Spacing Philosophy with Industrial Grid.",
+    "bento_grid": "MODE A: THE 'TETRIS' GRID for product features and process section. Asymmetrical and open.",
+    "technical_grid": "Use grid borders for the technical tables and product specifications (border-collapse, border-border/40).",
+    "padding": "Generous internal padding for cards (p-8 to p-12)."
+  },
+  "surfaces_and_micro_themes": {
+    "cards": "GRID BORDERS (The 'Technical' Look). Expose the skeleton. Flat background, 1px subtle border, no shadow. Hover: border color brightens to primary.",
+    "header": "Solid dark background (bg-[#0A0909]/90) with subtle bottom border, or Glassmorphism (bg-black/60, backdrop-blur-xl, border-white/10).",
+    "texture": "MANDATORY: SVG noise/grain overlay on the page body to give a tactile, editorial paper feel."
+  },
+  "components": {
+    "buttons": "Square or very minimal radius (rounded-sm). High contrast. Primary buttons in #E07A5F, secondary buttons are outline.",
+    "forms": "Shadcn based. Use raw, technical styling. Labels in uppercase mono font. Sharp inputs, no rounded corners.",
+    "tables": "Shadcn Table. Used for product variants and certifications. Monospace data cells.",
+    "images": "Hero images must have a gradient overlay or bg-black/40 so text is legible. No generic full-screen overlays."
+  },
+  "media": {
+    "images": [
+      {
+        "category": "hero",
+        "url": "https://static.prod-images.emergentagent.com/jobs/48fe1fb7-5393-4302-b72a-90bda65bb8a1/images/f9211b0c4ac4795fd1293f7e3fcfb356648606614144b269d36c8ed666e21d31.png",
+        "description": "Macro photography of raw Himalayan pink salt crystals, dramatic lighting, dark obsidian background.",
+        "usage": "Hero section background with appropriate overlay to establish the luxury feel."
+      },
+      {
+        "category": "background_abstract",
+        "url": "https://static.prod-images.emergentagent.com/jobs/48fe1fb7-5393-4302-b72a-90bda65bb8a1/images/fd428b934c1506394c4f3750dfad33941be24a3a49bda4da57ede082c6c5b97e.png",
+        "description": "Abstract elegant background mixing charcoal dark grey stone texture and glowing veins of translucent pink salt.",
+        "usage": "Use for the 'Process' or 'About' section backgrounds to add depth."
+      },
+      {
+        "category": "industrial_b2b",
+        "url": "https://static.prod-images.emergentagent.com/jobs/48fe1fb7-5393-4302-b72a-90bda65bb8a1/images/5537b00eeb8b753e875f0c891a20c170ac815930308c8caf2fb83ed21ff195f5.png",
+        "description": "Clean industrial warehouse storing large pallets of pink salt bricks, dark cinematic lighting.",
+        "usage": "Use in the 'Process/Quality' or 'Export/Shipping' sections."
+      },
+      {
+        "category": "shipping_logistics",
+        "url": "https://images.unsplash.com/photo-1771756743992-bc772a4f8d7e?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1OTN8MHwxfHNlYXJjaHwyfHxjYXJnbyUyMHNoaXAlMjBwb3J0JTIwZGFya3xlbnwwfHx8fDE3Nzc2NDE5MTR8MA&ixlib=rb-4.1.0&q=85",
+        "description": "Large cargo ship being loaded at night.",
+        "usage": "Use in 'Certifications' or 'Export Global Reach' sections to highlight global shipping."
+      },
+      {
+        "category": "product_raw",
+        "url": "https://images.unsplash.com/photo-1633730427321-f49ab5067971?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1NTZ8MHwxfHNlYXJjaHwxfHxoaW1hbGF5YW4lMjBwaW5rJTIwc2FsdHxlbnwwfHx8fDE3Nzc2NDE5MTN8MA&ixlib=rb-4.1.0&q=85",
+        "description": "Raw Himalayan Pink Salt representation.",
+        "usage": "Use as a product thumbnail for raw edible salt."
+      },
+      {
+        "category": "origin_mine",
+        "url": "https://images.unsplash.com/photo-1567629699072-56a69a5c1fa7?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1MDV8MHwxfHNlYXJjaHwxfHxraGV3cmElMjBzYWx0JTIwbWluZXxlbnwwfHx8fDE3Nzc2NDE5MTN8MA&ixlib=rb-4.1.0&q=85",
+        "description": "Earthy Khewra-like structure.",
+        "usage": "Use in About section origin story."
+      }
+    ]
+  },
+  "pages": {
+    "Home": "Hero with 'ق stones', introductory mission statement, grid of 3 main product categories, B2B credibility numbers.",
+    "About": "Origin story (Khewra Salt Mine, Pakistan heritage), editorial layout with generous text spacing.",
+    "Products": "Himalayan pink salt only (edible salt, lamps, bath salt, bricks/tiles, animal licks). Technical specs with each.",
+    "Process/Quality": "Mining → processing → export pipeline. Timeline or step-by-step layout.",
+    "Certifications": "Grid of HALAL, ISO, FDA (placeholders). High contrast, dark mode.",
+    "Contact": "Map/address, email, phone. Dark minimalist.",
+    "B2B_RFQ": "Multi-field form (company, country, product, quantity, packaging, port, message). Industrial form styling."
+  },
+  "instructions_to_main_agent": [
+    "Strictly adhere to the dark theme. Use the specified warm terracotta/pink salt accents sparingly to draw attention.",
+    "Use Cormorant Garamond for main headings (H1, H2) with tight tracking. Use IBM Plex Mono for overlines, labels, and technical data.",
+    "Build a 'noise/grain' overlay div covering the app to give a luxury editorial print feel.",
+    "Use Shadcn UI for forms, tables, and dialogs. Customize them to remove standard border-radii (use rounded-sm or none) and apply the dark/mineral color palette.",
+    "Build a custom 'Grid Borders' layout for data-heavy sections like product specifications.",
+    "Implement the 'ق stones' logo visually with a distinctive serif or Arabic font for 'ق'.",
+    "Never use generic full-screen overlays on images; use gradient overlays to preserve image clarity.",
+    "Add data-testid attributes to all interactive elements."
+  ]
+}
