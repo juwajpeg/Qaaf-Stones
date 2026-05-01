@@ -1,12 +1,12 @@
-from fastapi import FastAPI, APIRouter
+from fastapi import FastAPI, APIRouter, HTTPException
 from dotenv import load_dotenv
 from starlette.middleware.cors import CORSMiddleware
 from motor.motor_asyncio import AsyncIOMotorClient
 import os
 import logging
 from pathlib import Path
-from pydantic import BaseModel, Field, ConfigDict
-from typing import List
+from pydantic import BaseModel, Field, EmailStr
+from typing import List, Optional
 import uuid
 from datetime import datetime, timezone
 
@@ -14,59 +14,196 @@ from datetime import datetime, timezone
 ROOT_DIR = Path(__file__).parent
 load_dotenv(ROOT_DIR / '.env')
 
-# MongoDB connection
 mongo_url = os.environ['MONGO_URL']
 client = AsyncIOMotorClient(mongo_url)
 db = client[os.environ['DB_NAME']]
 
-# Create the main app without a prefix
-app = FastAPI()
-
-# Create a router with the /api prefix
+app = FastAPI(title="Q Stones API")
 api_router = APIRouter(prefix="/api")
 
 
-# Define Models
-class StatusCheck(BaseModel):
-    model_config = ConfigDict(extra="ignore")  # Ignore MongoDB's _id field
-    
+# ---------- Models ----------
+class RFQCreate(BaseModel):
+    company_name: str
+    contact_name: str
+    email: EmailStr
+    phone: Optional[str] = None
+    country: str
+    product: str
+    grade: Optional[str] = None
+    quantity_mt: Optional[str] = None
+    packaging: Optional[str] = None
+    destination_port: Optional[str] = None
+    incoterms: Optional[str] = None
+    target_price: Optional[str] = None
+    message: Optional[str] = None
+
+
+class RFQ(RFQCreate):
     id: str = Field(default_factory=lambda: str(uuid.uuid4()))
-    client_name: str
-    timestamp: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
+    created_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
 
-class StatusCheckCreate(BaseModel):
-    client_name: str
 
-# Add your routes to the router instead of directly to app
+class ContactCreate(BaseModel):
+    name: str
+    email: EmailStr
+    company: Optional[str] = None
+    subject: Optional[str] = None
+    message: str
+
+
+class Contact(ContactCreate):
+    id: str = Field(default_factory=lambda: str(uuid.uuid4()))
+    created_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
+
+
+class Product(BaseModel):
+    id: str
+    sku: str
+    name: str
+    category: str
+    description: str
+    grades: List[str]
+    granulation: List[str]
+    packaging: List[str]
+    moq: str
+    image: str
+
+
+# ---------- Static product catalog ----------
+PRODUCTS: List[Product] = [
+    Product(
+        id="edible-salt",
+        sku="QS-ED-001",
+        name="Edible Pink Salt",
+        category="Food Grade",
+        description="Premium 100% natural Himalayan pink salt sourced from the Khewra mine. Untreated, unrefined, rich in trace minerals.",
+        grades=["Food Grade A", "Food Grade B", "Industrial"],
+        granulation=["Powder (0.3-0.5mm)", "Fine (0.5-1mm)", "Coarse (1-3mm)", "Granular (2-5mm)", "Crystals (5-25mm)"],
+        packaging=["25kg PP bags", "50kg PP bags", "1 MT jumbo bags", "Custom retail"],
+        moq="20 MT (1x20ft container)",
+        image="https://images.unsplash.com/photo-1633730427321-f49ab5067971?crop=entropy&cs=srgb&fm=jpg&q=85&w=900",
+    ),
+    Product(
+        id="salt-lamps",
+        sku="QS-LP-002",
+        name="Pink Salt Lamps",
+        category="Wellness",
+        description="Hand-carved Himalayan salt lamps in natural and crafted shapes. Includes electrical fittings and bulbs.",
+        grades=["Natural Shape", "Crafted (Pyramid, Sphere, Cube)", "USB Mini"],
+        granulation=["1-2 kg", "2-3 kg", "3-5 kg", "5-7 kg", "7-10 kg", "10-15 kg"],
+        packaging=["Single retail box", "Bulk carton", "Pallet"],
+        moq="500 pcs",
+        image="https://images.unsplash.com/photo-1602928298849-325cec8771c4?crop=entropy&cs=srgb&fm=jpg&q=85&w=900",
+    ),
+    Product(
+        id="bath-salt",
+        sku="QS-BT-003",
+        name="Bath & Spa Salt",
+        category="Wellness",
+        description="Therapeutic grade pink salt for bath, spa and aromatherapy. Available in fine to coarse with optional essential oils.",
+        grades=["Spa A", "Bath B", "Foot Soak"],
+        granulation=["Fine (0.5-1mm)", "Medium (1-3mm)", "Coarse (2-5mm)"],
+        packaging=["1kg pouches", "5kg buckets", "25kg bags", "Bulk"],
+        moq="5 MT",
+        image="https://images.unsplash.com/photo-1532413992378-f169ac26fff0?crop=entropy&cs=srgb&fm=jpg&q=85&w=900",
+    ),
+    Product(
+        id="salt-bricks",
+        sku="QS-BR-004",
+        name="Salt Bricks & Tiles",
+        category="Construction",
+        description="Architectural pink salt bricks and tiles for salt rooms, halotherapy chambers and decorative walls.",
+        grades=["Standard", "Premium A", "Polished"],
+        granulation=["8x4x2 inch", "8x4x1 inch", "12x6x2 inch", "Custom cuts"],
+        packaging=["Wooden pallet", "Carton + foam"],
+        moq="2,000 pcs",
+        image="https://images.unsplash.com/photo-1604335079110-1fab8d6dc73e?crop=entropy&cs=srgb&fm=jpg&q=85&w=900",
+    ),
+    Product(
+        id="animal-licks",
+        sku="QS-AL-005",
+        name="Animal Salt Licks",
+        category="Agriculture",
+        description="Mineral-rich salt licks for cattle, horses, sheep and wildlife. Natural shapes or pressed blocks.",
+        grades=["Natural", "Pressed"],
+        granulation=["2-4 kg", "4-7 kg", "Custom"],
+        packaging=["Loose in bags", "Individual carton"],
+        moq="20 MT",
+        image="https://images.unsplash.com/photo-1551845041-63e8e76836ea?crop=entropy&cs=srgb&fm=jpg&q=85&w=900",
+    ),
+    Product(
+        id="gourmet-grinder",
+        sku="QS-GR-006",
+        name="Gourmet Grinder Salt",
+        category="Food Grade",
+        description="Premium crystal grade for retail grinders. Uniform 2-5mm crystals, extra clean.",
+        grades=["Premium A", "Standard"],
+        granulation=["2-5mm crystals"],
+        packaging=["Bulk 25kg", "Private label retail"],
+        moq="10 MT",
+        image="https://images.unsplash.com/photo-1607301406259-dfb186e15de8?crop=entropy&cs=srgb&fm=jpg&q=85&w=900",
+    ),
+]
+
+
+# ---------- Routes ----------
 @api_router.get("/")
 async def root():
-    return {"message": "Hello World"}
+    return {"name": "Q Stones API", "status": "ok"}
 
-@api_router.post("/status", response_model=StatusCheck)
-async def create_status_check(input: StatusCheckCreate):
-    status_dict = input.model_dump()
-    status_obj = StatusCheck(**status_dict)
-    
-    # Convert to dict and serialize datetime to ISO string for MongoDB
-    doc = status_obj.model_dump()
-    doc['timestamp'] = doc['timestamp'].isoformat()
-    
-    _ = await db.status_checks.insert_one(doc)
-    return status_obj
 
-@api_router.get("/status", response_model=List[StatusCheck])
-async def get_status_checks():
-    # Exclude MongoDB's _id field from the query results
-    status_checks = await db.status_checks.find({}, {"_id": 0}).to_list(1000)
-    
-    # Convert ISO string timestamps back to datetime objects
-    for check in status_checks:
-        if isinstance(check['timestamp'], str):
-            check['timestamp'] = datetime.fromisoformat(check['timestamp'])
-    
-    return status_checks
+@api_router.get("/products", response_model=List[Product])
+async def list_products():
+    return PRODUCTS
 
-# Include the router in the main app
+
+@api_router.get("/products/{product_id}", response_model=Product)
+async def get_product(product_id: str):
+    for p in PRODUCTS:
+        if p.id == product_id:
+            return p
+    raise HTTPException(status_code=404, detail="Product not found")
+
+
+@api_router.post("/rfq", response_model=RFQ)
+async def submit_rfq(payload: RFQCreate):
+    rfq = RFQ(**payload.model_dump())
+    doc = rfq.model_dump()
+    doc['created_at'] = doc['created_at'].isoformat()
+    await db.rfqs.insert_one(doc)
+    # Email integration placeholder — when RESEND_API_KEY/SENDGRID_API_KEY is provided
+    # the agent will wire it here. For now we persist to MongoDB.
+    return rfq
+
+
+@api_router.get("/rfq", response_model=List[RFQ])
+async def list_rfqs():
+    rfqs = await db.rfqs.find({}, {"_id": 0}).sort("created_at", -1).to_list(500)
+    for r in rfqs:
+        if isinstance(r.get('created_at'), str):
+            r['created_at'] = datetime.fromisoformat(r['created_at'])
+    return rfqs
+
+
+@api_router.post("/contact", response_model=Contact)
+async def submit_contact(payload: ContactCreate):
+    contact = Contact(**payload.model_dump())
+    doc = contact.model_dump()
+    doc['created_at'] = doc['created_at'].isoformat()
+    await db.contacts.insert_one(doc)
+    return contact
+
+
+@api_router.get("/contact", response_model=List[Contact])
+async def list_contacts():
+    items = await db.contacts.find({}, {"_id": 0}).sort("created_at", -1).to_list(500)
+    for c in items:
+        if isinstance(c.get('created_at'), str):
+            c['created_at'] = datetime.fromisoformat(c['created_at'])
+    return items
+
+
 app.include_router(api_router)
 
 app.add_middleware(
@@ -77,12 +214,9 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Configure logging
-logging.basicConfig(
-    level=logging.INFO,
-    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
-)
+logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
+
 
 @app.on_event("shutdown")
 async def shutdown_db_client():
