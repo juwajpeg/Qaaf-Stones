@@ -1,4 +1,4 @@
-from fastapi import FastAPI, APIRouter, HTTPException
+from fastapi import FastAPI, APIRouter, HTTPException, BackgroundTasks
 from dotenv import load_dotenv
 from starlette.middleware.cors import CORSMiddleware
 from motor.motor_asyncio import AsyncIOMotorClient
@@ -20,6 +20,9 @@ db = client[os.environ['DB_NAME']]
 
 app = FastAPI(title="Q Stones API")
 api_router = APIRouter(prefix="/api")
+
+# Email service imported after env is loaded
+from email_service import send_rfq_notification, send_contact_notification  # noqa: E402
 
 
 # ---------- Models ----------
@@ -167,13 +170,13 @@ async def get_product(product_id: str):
 
 
 @api_router.post("/rfq", response_model=RFQ)
-async def submit_rfq(payload: RFQCreate):
+async def submit_rfq(payload: RFQCreate, background_tasks: BackgroundTasks):
     rfq = RFQ(**payload.model_dump())
     doc = rfq.model_dump()
     doc['created_at'] = doc['created_at'].isoformat()
     await db.rfqs.insert_one(doc)
-    # Email integration placeholder — when RESEND_API_KEY/SENDGRID_API_KEY is provided
-    # the agent will wire it here. For now we persist to MongoDB.
+    # Fire-and-forget email notification to admin
+    background_tasks.add_task(send_rfq_notification, doc)
     return rfq
 
 
