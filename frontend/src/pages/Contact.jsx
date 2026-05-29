@@ -1,31 +1,34 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useForm, ValidationError } from "@formspree/react";
 import { toast } from "sonner";
 import { Mail, Phone, MapPin, ArrowUpRight } from "lucide-react";
 import { Link } from "react-router-dom";
-import { submitContact } from "@/lib/api";
+
+const FORMSPREE_ID = "mbdbbjyn";
 
 export default function Contact() {
+  const [state, handleSubmit] = useForm(FORMSPREE_ID);
   const [form, setForm] = useState({ name: "", email: "", company: "", subject: "", message: "" });
-  const [loading, setLoading] = useState(false);
 
   const onChange = (k) => (e) => setForm({ ...form, [k]: e.target.value });
 
-  const onSubmit = async (e) => {
-    e.preventDefault();
+  useEffect(() => {
+    if (state.succeeded) {
+      toast.success("Message received. We'll respond within one business day.");
+      setForm({ name: "", email: "", company: "", subject: "", message: "" });
+    }
+    if (state.errors && Object.keys(state.errors).length > 0) {
+      toast.error("Could not send. Please check the fields and try again.");
+    }
+  }, [state.succeeded, state.errors]);
+
+  const onSubmit = (e) => {
     if (!form.name || !form.email || !form.message) {
+      e.preventDefault();
       toast.error("Name, email and message are required.");
       return;
     }
-    setLoading(true);
-    try {
-      await submitContact(form);
-      toast.success("Message received. We'll respond within one business day.");
-      setForm({ name: "", email: "", company: "", subject: "", message: "" });
-    } catch (err) {
-      toast.error("Failed to send. Please try again.");
-    } finally {
-      setLoading(false);
-    }
+    handleSubmit(e);
   };
 
   return (
@@ -42,7 +45,7 @@ export default function Contact() {
       <section className="border-b border-border">
         <div className="max-w-[1480px] mx-auto grid grid-cols-1 md:grid-cols-3">
           {[
-            { Icon: Mail, t: "Email", v: "export@qstones.com", h: "mailto:export@qstones.com" },
+            { Icon: Mail, t: "Email", v: "contact@qaafstones.com", h: "mailto:contact@qaafstones.com" },
             { Icon: Phone, t: "Phone / WhatsApp", v: "+92 (0) 51 000 0000", h: "tel:+92510000000" },
             { Icon: MapPin, t: "Office", v: "Khewra Salt Region, Punjab, Pakistan", h: "https://maps.google.com/?q=Khewra+Salt+Mine" },
           ].map(({ Icon, t, v, h }, i) => (
@@ -82,50 +85,64 @@ export default function Contact() {
             </div>
           </div>
 
-          <form onSubmit={onSubmit} data-testid="contact-form" className="md:col-span-7 border border-border bg-[#0A0909]">
-            <div className="grid grid-cols-1 md:grid-cols-2">
-              <Field label="Full name" testid="contact-name" required value={form.name} onChange={onChange("name")} />
-              <Field label="Email" testid="contact-email" type="email" required value={form.email} onChange={onChange("email")} className="md:border-l border-t md:border-t-0 border-border" />
-              <Field label="Company" testid="contact-company" value={form.company} onChange={onChange("company")} className="border-t border-border" />
-              <Field label="Subject" testid="contact-subject" value={form.subject} onChange={onChange("subject")} className="border-t border-border md:border-l" />
+          {state.succeeded ? (
+            <div data-testid="contact-success" className="md:col-span-7 border border-[#E07A5F] bg-[#E07A5F]/5 p-12 text-center">
+              <div className="overline text-[#E07A5F]">// Message received</div>
+              <h2 className="mt-6 font-serif text-4xl tracking-tight">Thank you.</h2>
+              <p className="mt-4 text-foreground/75 max-w-xl mx-auto">
+                We&apos;ve received your message. Our partnerships desk will revert within one business day.
+              </p>
             </div>
-            <div className="border-t border-border">
-              <label className="block p-5">
-                <span className="overline">Message *</span>
-                <textarea
-                  data-testid="contact-message"
-                  required
-                  rows={6}
-                  value={form.message}
-                  onChange={onChange("message")}
-                  className="mt-3 w-full bg-transparent border-0 p-0 outline-none focus:ring-0 text-foreground placeholder:text-muted-foreground resize-none font-sans"
-                  placeholder="What can we help with?"
-                />
-              </label>
-            </div>
-            <div className="border-t border-border p-5 flex items-center justify-between">
-              <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-muted-foreground">Avg response · &lt; 1 business day</span>
-              <button
-                type="submit"
-                data-testid="contact-submit"
-                disabled={loading}
-                className="inline-flex items-center gap-2 bg-[#E07A5F] hover:bg-[#F08B70] disabled:opacity-50 text-[#0A0909] px-6 py-3 font-mono text-[11px] uppercase tracking-[0.22em]"
-              >
-                {loading ? "Sending…" : <>Send message <ArrowUpRight size={14} /></>}
-              </button>
-            </div>
-          </form>
+          ) : (
+            <form onSubmit={onSubmit} data-testid="contact-form" className="md:col-span-7 border border-border bg-[#0A0909]">
+              <input type="hidden" name="_subject" value={`[QStones Contact] ${form.subject || form.name || "New message"}`} />
+              <div className="grid grid-cols-1 md:grid-cols-2">
+                <Field label="Full name" name="name" testid="contact-name" required value={form.name} onChange={onChange("name")} />
+                <Field label="Email" name="email" testid="contact-email" type="email" required value={form.email} onChange={onChange("email")} className="md:border-l border-t md:border-t-0 border-border" />
+                <Field label="Company" name="company" testid="contact-company" value={form.company} onChange={onChange("company")} className="border-t border-border" />
+                <Field label="Subject" name="subject" testid="contact-subject" value={form.subject} onChange={onChange("subject")} className="border-t border-border md:border-l" />
+              </div>
+              <div className="border-t border-border">
+                <label className="block p-5">
+                  <span className="overline">Message *</span>
+                  <textarea
+                    data-testid="contact-message"
+                    name="message"
+                    required
+                    rows={6}
+                    value={form.message}
+                    onChange={onChange("message")}
+                    className="mt-3 w-full bg-transparent border-0 p-0 outline-none focus:ring-0 text-foreground placeholder:text-muted-foreground resize-none font-sans"
+                    placeholder="What can we help with?"
+                  />
+                  <ValidationError field="message" errors={state.errors} className="text-[#E07A5F] font-mono text-xs mt-2" />
+                </label>
+              </div>
+              <div className="border-t border-border p-5 flex items-center justify-between">
+                <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-muted-foreground">Avg response · &lt; 1 business day</span>
+                <button
+                  type="submit"
+                  data-testid="contact-submit"
+                  disabled={state.submitting}
+                  className="inline-flex items-center gap-2 bg-[#E07A5F] hover:bg-[#F08B70] disabled:opacity-50 text-[#0A0909] px-6 py-3 font-mono text-[11px] uppercase tracking-[0.22em]"
+                >
+                  {state.submitting ? "Sending…" : <>Send message <ArrowUpRight size={14} /></>}
+                </button>
+              </div>
+            </form>
+          )}
         </div>
       </section>
     </div>
   );
 }
 
-const Field = ({ label, testid, type = "text", value, onChange, required, className = "" }) => (
+const Field = ({ label, name, testid, type = "text", value, onChange, required, className = "" }) => (
   <label className={`block p-5 ${className}`}>
     <span className="overline">{label}{required && " *"}</span>
     <input
       data-testid={testid}
+      name={name}
       type={type}
       value={value}
       onChange={onChange}
