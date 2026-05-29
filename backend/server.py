@@ -190,11 +190,12 @@ async def list_rfqs():
 
 
 @api_router.post("/contact", response_model=Contact)
-async def submit_contact(payload: ContactCreate):
+async def submit_contact(payload: ContactCreate, background_tasks: BackgroundTasks):
     contact = Contact(**payload.model_dump())
     doc = contact.model_dump()
     doc['created_at'] = doc['created_at'].isoformat()
     await db.contacts.insert_one(doc)
+    background_tasks.add_task(send_contact_notification, doc)
     return contact
 
 
