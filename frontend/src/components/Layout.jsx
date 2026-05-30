@@ -33,7 +33,7 @@ const Header = () => {
         scrolled ? "bg-[#0A0909]/85 backdrop-blur-xl border-b border-border" : "bg-transparent"
       }`}
     >
-      <div className="max-w-[1480px] mx-auto px-6 md:px-10 h-20 flex items-center justify-between">
+      <div className="max-w-[1480px] mx-auto px-6 md:px-10 h-24 flex items-center justify-between">
         <Logo size="sm" />
         <nav className="hidden lg:flex items-center gap-8">
           {NAV.map((n) => (
@@ -158,7 +158,7 @@ export default function Layout({ children }) {
   return (
     <div className="min-h-screen flex flex-col bg-background text-foreground">
       <Header />
-      <main className="flex-1 pt-20">{children}</main>
+      <main className="flex-1 pt-24">{children}</main>
       <Footer />
     </div>
   );
