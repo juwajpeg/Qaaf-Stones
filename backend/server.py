@@ -85,7 +85,7 @@ PRODUCTS: List[Product] = [
         granulation=["Powder (0.3-0.5mm)", "Fine (0.5-1mm)", "Coarse (1-3mm)", "Granular (2-5mm)", "Crystals (5-25mm)"],
         packaging=["25kg PP bags", "50kg PP bags", "1 MT jumbo bags", "Custom retail"],
         moq="20 MT (1x20ft container)",
-        image="https://images.unsplash.com/photo-1633730427321-f49ab5067971?crop=entropy&cs=srgb&fm=jpg&q=85&w=900",
+        image="https://images.pexels.com/photos/7779878/pexels-photo-7779878.jpeg?auto=compress&cs=tinysrgb&w=900&h=675&fit=crop",
     ),
     Product(
         id="salt-lamps",
@@ -97,7 +97,7 @@ PRODUCTS: List[Product] = [
         granulation=["1-2 kg", "2-3 kg", "3-5 kg", "5-7 kg", "7-10 kg", "10-15 kg"],
         packaging=["Single retail box", "Bulk carton", "Pallet"],
         moq="500 pcs",
-        image="https://images.unsplash.com/photo-1602928298849-325cec8771c4?crop=entropy&cs=srgb&fm=jpg&q=85&w=900",
+        image="https://images.pexels.com/photos/6634303/pexels-photo-6634303.jpeg?auto=compress&cs=tinysrgb&w=900&h=675&fit=crop",
     ),
     Product(
         id="bath-salt",
@@ -109,7 +109,7 @@ PRODUCTS: List[Product] = [
         granulation=["Fine (0.5-1mm)", "Medium (1-3mm)", "Coarse (2-5mm)"],
         packaging=["1kg pouches", "5kg buckets", "25kg bags", "Bulk"],
         moq="5 MT",
-        image="https://images.unsplash.com/photo-1532413992378-f169ac26fff0?crop=entropy&cs=srgb&fm=jpg&q=85&w=900",
+        image="https://images.pexels.com/photos/6690148/pexels-photo-6690148.jpeg?auto=compress&cs=tinysrgb&w=900&h=675&fit=crop",
     ),
     Product(
         id="salt-bricks",
@@ -121,7 +121,7 @@ PRODUCTS: List[Product] = [
         granulation=["8x4x2 inch", "8x4x1 inch", "12x6x2 inch", "Custom cuts"],
         packaging=["Wooden pallet", "Carton + foam"],
         moq="2,000 pcs",
-        image="https://images.unsplash.com/photo-1604335079110-1fab8d6dc73e?crop=entropy&cs=srgb&fm=jpg&q=85&w=900",
+        image="https://images.pexels.com/photos/10636881/pexels-photo-10636881.jpeg?auto=compress&cs=tinysrgb&w=900&h=675&fit=crop",
     ),
     Product(
         id="animal-licks",
@@ -133,7 +133,7 @@ PRODUCTS: List[Product] = [
         granulation=["2-4 kg", "4-7 kg", "Custom"],
         packaging=["Loose in bags", "Individual carton"],
         moq="20 MT",
-        image="https://images.unsplash.com/photo-1551845041-63e8e76836ea?crop=entropy&cs=srgb&fm=jpg&q=85&w=900",
+        image="https://images.pexels.com/photos/5507586/pexels-photo-5507586.jpeg?auto=compress&cs=tinysrgb&w=900&h=675&fit=crop",
     ),
     Product(
         id="gourmet-grinder",
@@ -145,7 +145,7 @@ PRODUCTS: List[Product] = [
         granulation=["2-5mm crystals"],
         packaging=["Bulk 25kg", "Private label retail"],
         moq="10 MT",
-        image="https://images.unsplash.com/photo-1607301406259-dfb186e15de8?crop=entropy&cs=srgb&fm=jpg&q=85&w=900",
+        image="https://images.pexels.com/photos/12174085/pexels-photo-12174085.jpeg?auto=compress&cs=tinysrgb&w=900&h=675&fit=crop",
     ),
 ]
 

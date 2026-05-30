@@ -16,17 +16,17 @@ const CATEGORIES = [
   {
     title: "Edible & Gourmet",
     items: ["Powder", "Fine", "Coarse", "Crystals", "Grinder Grade"],
-    img: "https://images.unsplash.com/photo-1633730427321-f49ab5067971?crop=entropy&cs=srgb&fm=jpg&q=85&w=900",
+    img: "https://images.pexels.com/photos/7779878/pexels-photo-7779878.jpeg?auto=compress&cs=tinysrgb&w=900&h=675&fit=crop",
   },
   {
     title: "Lamps & Décor",
     items: ["Natural", "Crafted", "USB", "1–15 kg"],
-    img: "https://images.unsplash.com/photo-1602928298849-325cec8771c4?crop=entropy&cs=srgb&fm=jpg&q=85&w=900",
+    img: "https://images.pexels.com/photos/6634303/pexels-photo-6634303.jpeg?auto=compress&cs=tinysrgb&w=900&h=675&fit=crop",
   },
   {
     title: "Bath, Spa & Bricks",
     items: ["Bath salt", "Spa grade", "Tiles", "Halotherapy bricks"],
-    img: "https://images.unsplash.com/photo-1604335079110-1fab8d6dc73e?crop=entropy&cs=srgb&fm=jpg&q=85&w=900",
+    img: "https://images.pexels.com/photos/6690148/pexels-photo-6690148.jpeg?auto=compress&cs=tinysrgb&w=900&h=675&fit=crop",
   },
 ];
 
@@ -105,10 +105,11 @@ export default function Home() {
               We are not a trading desk. We are a single mineral, taken seriously.
             </h2>
             <p className="mt-8 text-foreground/75 text-base md:text-lg leading-relaxed max-w-3xl">
-              ق stones is built on one belief — that pink salt deserves the same
-              rigour as fine wine or single-origin coffee. Every container we
-              ship is traceable to a face at the mine, a granulation curve in
-              our lab, and a port officer in Karachi who knows our name.
+              Qaaf Stones is built on one belief — that pink salt deserves the same
+              rigour as fine wine or single-origin coffee. We do not blend, broker
+              or trade through middlemen. Every container we ship is taken
+              <span className="text-[#E07A5F] italic"> straight from the source</span> —
+              the Khewra mine — to your port.
             </p>
             <Link
               to="/about"
@@ -185,7 +186,7 @@ export default function Home() {
             {[
               { Icon: Mountain, t: "Direct Mine Access", d: "Long-term offtake agreements with licensed Khewra contractors." },
               { Icon: Package, t: "In-house Processing", d: "Crushing, washing, screening and packaging in our own facility." },
-              { Icon: ShieldCheck, t: "Lab Verified", d: "Independent SGS / Intertek COA shipped with every container." },
+              { Icon: ShieldCheck, t: "Lab Verified", d: "Independent SGS / Intertek COA available on request — billed separately." },
               { Icon: Anchor, t: "Karachi FOB", d: "30-day average lead time. CIF available to most major ports." },
             ].map(({ Icon, t, d }, i) => (
               <div key={i} className="bg-[#0A0909] p-8">

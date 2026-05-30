@@ -108,7 +108,7 @@ const Footer = () => (
           Pakistan&apos;s Khewra mineral, exported with editorial precision.
         </p>
         <p className="mt-4 text-sm text-muted-foreground max-w-md">
-          ق stones is a B2B exporter of premium Himalayan pink salt — sourced direct, processed cleanly, shipped globally.
+          Qaaf Stones is a B2B exporter of premium Himalayan pink salt — sourced direct, processed cleanly, shipped globally.
         </p>
       </div>
       <div className="md:col-span-3">
@@ -137,8 +137,8 @@ const Footer = () => (
         </p>
         <div className="overline mt-6 mb-2">Contact</div>
         <p className="text-sm text-foreground/80">
-          export@qstones.com<br />
-          +92 (0) 51 000 0000
+          export@qaafstones.com<br />
+          +92 328 1317473
         </p>
       </div>
     </div>

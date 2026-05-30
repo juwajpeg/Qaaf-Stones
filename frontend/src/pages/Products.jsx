@@ -18,6 +18,20 @@ export default function Products() {
 
   return (
     <div data-testid="page-products">
+      {/* Straight from the source — prominent banner */}
+      <section data-testid="products-source-banner" className="border-b border-border">
+        <div className="max-w-[1480px] mx-auto px-6 md:px-10 py-16 md:py-24">
+          <div className="overline">// Single origin · Single mineral</div>
+          <h1 className="mt-6 font-serif text-5xl md:text-7xl lg:text-8xl tracking-tight leading-[0.95] max-w-5xl">
+            Khewra to your port.<br />
+            <span className="text-[#E07A5F] italic">Straight from the source.</span>
+          </h1>
+          <p className="mt-8 max-w-2xl text-foreground/75 text-base md:text-lg leading-relaxed">
+            Six product families, one mineral, zero intermediaries. Every SKU below is mined, processed and packed by Qaaf Stones — never bought, blended or relabelled.
+          </p>
+        </div>
+      </section>
+
       <Section
         eyebrow="// Catalogue"
         title="Six product families. One mineral."

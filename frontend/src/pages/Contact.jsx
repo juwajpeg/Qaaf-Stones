@@ -37,7 +37,7 @@ export default function Contact() {
         <div className="max-w-[1480px] mx-auto px-6 md:px-10 py-24 md:py-32">
           <div className="overline">// Contact</div>
           <h1 className="mt-6 font-serif text-5xl md:text-7xl tracking-tight max-w-3xl leading-[1]">
-            One desk. Two languages. <span className="italic text-foreground/60">European hours.</span>
+            One desk. Three languages. <span className="italic text-foreground/60">Pakistan time.</span>
           </h1>
         </div>
       </section>
@@ -45,8 +45,8 @@ export default function Contact() {
       <section className="border-b border-border">
         <div className="max-w-[1480px] mx-auto grid grid-cols-1 md:grid-cols-3">
           {[
-            { Icon: Mail, t: "Email", v: "contact@qaafstones.com", h: "mailto:contact@qaafstones.com" },
-            { Icon: Phone, t: "Phone / WhatsApp", v: "+92 (0) 51 000 0000", h: "tel:+92510000000" },
+            { Icon: Mail, t: "Email", v: "export@qaafstones.com", h: "mailto:export@qaafstones.com" },
+            { Icon: Phone, t: "Phone / WhatsApp", v: "+92 328 1317473", h: "tel:+923281317473" },
             { Icon: MapPin, t: "Office", v: "Khewra Salt Region, Punjab, Pakistan", h: "https://maps.google.com/?q=Khewra+Salt+Mine" },
           ].map(({ Icon, t, v, h }, i) => (
             <a

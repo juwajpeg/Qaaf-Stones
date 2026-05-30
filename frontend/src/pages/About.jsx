@@ -10,6 +10,22 @@ export default function About() {
     <div data-testid="page-about">
       <Section eyebrow="About · ق stones" title="A 250-million-year-old mineral, handled with restraint." kicker="We are an export-only company built around one product: Pakistani Himalayan pink salt. No diversification, no shortcuts. Just a single mineral, taken seriously from rock face to bill of lading." />
 
+      {/* Straight from the source — prominent banner */}
+      <section data-testid="straight-from-source-banner" className="border-y border-border bg-[#141212]">
+        <div className="max-w-[1480px] mx-auto px-6 md:px-10 py-16 md:py-24 grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+          <div className="md:col-span-2 overline">// Our promise</div>
+          <div className="md:col-span-10">
+            <p className="font-serif text-4xl md:text-6xl lg:text-7xl tracking-tight leading-[1.02]">
+              <span className="text-foreground/40">No middlemen.</span>{" "}
+              <span className="text-[#E07A5F] italic">Straight from the source.</span>
+            </p>
+            <p className="mt-6 max-w-3xl text-foreground/70 text-base md:text-lg leading-relaxed">
+              Every kilogram we export leaves the Khewra rock face and travels — through our own processing line — directly to your container. No traders, no rebranded blends, no opaque chain.
+            </p>
+          </div>
+        </div>
+      </section>
+
       <section className="border-y border-border">
         <div className="max-w-[1480px] mx-auto grid grid-cols-1 md:grid-cols-2">
           <div className="aspect-[4/5] md:aspect-auto bg-cover bg-center min-h-[420px]" style={{ backgroundImage: `url(${ORIGIN_IMG})` }} />
@@ -23,9 +39,10 @@ export default function About() {
               moisture — that simply cannot be replicated synthetically.
             </p>
             <p className="mt-4 text-foreground/75 leading-relaxed">
-              ق stones works with three licensed contractors at the rock face.
-              Every batch is traceable, every truck is weighed at our gate, and
-              every shipment carries an independent COA — no exceptions.
+              Qaaf Stones works with three licensed contractors at the rock face.
+              Every batch is traceable, every truck is weighed at our gate. An
+              independent third-party COA can be issued on request and is
+              billed to the buyer separately.
             </p>
           </div>
         </div>
@@ -35,7 +52,7 @@ export default function About() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-border mt-4">
           {[
             { n: "01", t: "Source-honest", d: "We will not blend Pakistani pink salt with cheaper Iranian or Andean alternatives. The label says Khewra, the salt is Khewra." },
-            { n: "02", t: "Lab-verified", d: "Independent third-party laboratory testing on every container — chemistry, granulation, moisture, foreign matter." },
+            { n: "02", t: "Lab-verified", d: "Independent third-party laboratory testing available on every container — chemistry, granulation, moisture, foreign matter. COAs are issued on request and billed separately." },
             { n: "03", t: "Privately traceable", d: "Mine ID, processing batch, packaging line, FOB date — all on a QR-linked digital passport per pallet." },
           ].map((b) => (
             <div key={b.n} className="p-10 bg-[#0A0909]">

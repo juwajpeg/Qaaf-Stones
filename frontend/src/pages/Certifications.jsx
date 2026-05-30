@@ -6,7 +6,7 @@ const CERTS = [
   { Icon: BadgeCheck, t: "HALAL", d: "Verified by IFANCA / SANHA — full halal certification chain on edible grades." },
   { Icon: FileCheck2, t: "FDA Registered", d: "U.S. FDA Food Facility registration — eligible for direct retail-grade exports to USA." },
   { Icon: Award, t: "GMP & HACCP", d: "Good Manufacturing Practice and Hazard Analysis programmes audited annually." },
-  { Icon: Leaf, t: "Kosher (KOF-K)", d: "Kosher certified product line for retail private-label clients in Israel and North America." },
+  { Icon: Leaf, t: "Kosher (KOF-K)", d: "Kosher certified product line for retail private-label clients across North America and global markets." },
   { Icon: Globe2, t: "EU Compliance", d: "Compliant with EC 1907/2006 (REACH) and CXS 150-1985 Codex food-grade salt standard." },
 ];
 
@@ -25,7 +25,7 @@ export default function Certifications() {
       <Section
         eyebrow="// Compliance & Certifications"
         title="Paperwork that lets your customs broker sleep."
-        kicker="ق stones holds and maintains the certifications below. Originals available on request, COAs travel with every container, and we are happy to be audited by your own QA team in Khewra."
+        kicker="Qaaf Stones holds and maintains the certifications below. Originals are available on request. Independent COAs (SGS / Intertek) can be issued per container at the buyer's cost. We welcome buyer-led audits of our Khewra facility by prior appointment."
       >
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-border mt-4">
           {CERTS.map(({ Icon, t, d }, i) => (
@@ -41,7 +41,7 @@ export default function Certifications() {
         </div>
       </Section>
 
-      <Section eyebrow="// Sample COA — Container Q-2025-1187" title="Every shipment ships with its own number." kicker="The certificate of analysis below is illustrative only — your actual COA will be issued by SGS / Intertek against your specific contract values.">
+      <Section eyebrow="// Sample COA — Container Q-2025-1187" title="Every COA is issued on request." kicker="The certificate of analysis below is illustrative only — your actual COA will be issued by SGS / Intertek per container, on request, and billed separately to the buyer.">
         <div className="border border-border bg-[#0A0909] mt-2">
           <div className="grid grid-cols-3 bg-[#141212] border-b border-border">
             <div className="p-5 overline">Parameter</div>

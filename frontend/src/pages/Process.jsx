@@ -4,7 +4,7 @@ const STEPS = [
   { n: "01", t: "Source", d: "Hand-selected blocks pulled from licensed Khewra contractor zones. Each truck weighed & photographed at our gate.", img: "https://images.unsplash.com/photo-1567629699072-56a69a5c1fa7?crop=entropy&cs=srgb&fm=jpg&q=85&w=1200" },
   { n: "02", t: "Inspect", d: "Visual & XRF screening for foreign matter, color consistency, moisture content. Rejected lots returned to contractor.", img: "https://static.prod-images.emergentagent.com/jobs/48fe1fb7-5393-4302-b72a-90bda65bb8a1/images/fd428b934c1506394c4f3750dfad33941be24a3a49bda4da57ede082c6c5b97e.png" },
   { n: "03", t: "Process", d: "Crushing → washing → screening to your spec. Granulation tolerance ±5%. Food-grade stainless steel throughout.", img: "https://static.prod-images.emergentagent.com/jobs/48fe1fb7-5393-4302-b72a-90bda65bb8a1/images/5537b00eeb8b753e875f0c891a20c170ac815930308c8caf2fb83ed21ff195f5.png" },
-  { n: "04", t: "Lab", d: "Independent third-party COA (SGS / Intertek) on every batch — NaCl%, moisture, heavy metals, microbial.", img: "https://images.unsplash.com/photo-1581093458791-9a48bd9b27a4?crop=entropy&cs=srgb&fm=jpg&q=85&w=1200" },
+  { n: "04", t: "Lab", d: "Independent third-party COA (SGS / Intertek) available on request — NaCl%, moisture, heavy metals, microbial. Issued per batch, billed to the buyer separately.", img: "https://images.unsplash.com/photo-1581093458791-9a48bd9b27a4?crop=entropy&cs=srgb&fm=jpg&q=85&w=1200" },
   { n: "05", t: "Pack", d: "PP bags, jumbo bags, retail private label — all with tamper-evident seals and per-pallet QR traceability.", img: "https://images.unsplash.com/photo-1565891741441-64926e441838?crop=entropy&cs=srgb&fm=jpg&q=85&w=1200" },
   { n: "06", t: "Ship", d: "FOB Karachi, CIF/CFR available. Direct routes to Jebel Ali, Hamburg, Rotterdam, NY/NJ, Yokohama.", img: "https://images.unsplash.com/photo-1771756743992-bc772a4f8d7e?crop=entropy&cs=srgb&fm=jpg&q=85&w=1200" },
 ];
@@ -47,7 +47,7 @@ export default function Process() {
         ))}
       </div>
 
-      <Section eyebrow="// Technical specification" title="Default chemistry profile." kicker="Custom specs available — tighter tolerances, food-grade additives, retail moisture caps. Every container ships with its own COA referencing your contract values.">
+      <Section eyebrow="// Technical specification" title="Default chemistry profile." kicker="Custom specs available — tighter tolerances, food-grade additives, retail moisture caps. COAs are available on request and billed separately to the buyer.">
         <div className="border border-border bg-[#0A0909] mt-4">
           <div className="grid grid-cols-2 border-b border-border bg-[#141212]">
             <div className="p-5 overline">Parameter</div>
