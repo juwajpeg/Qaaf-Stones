@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { ArrowLeft, ArrowUpRight } from "lucide-react";
-import { fetchProduct } from "@/lib/api";
+import { getProductById } from "@/data/products";
 
 export default function ProductDetail() {
   const { id } = useParams();
@@ -9,9 +9,13 @@ export default function ProductDetail() {
   const [error, setError] = useState(false);
 
   useEffect(() => {
-    setP(null);
-    setError(false);
-    fetchProduct(id).then(setP).catch(() => setError(true));
+    const found = getProductById(id);
+    if (found) {
+      setP(found);
+      setError(false);
+    } else {
+      setError(true);
+    }
   }, [id]);
 
   if (error) {

@@ -1,17 +1,12 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { ArrowUpRight, ArrowRight } from "lucide-react";
-import { fetchProducts } from "@/lib/api";
+import { PRODUCTS } from "@/data/products";
 import Section from "@/components/Section";
 
 export default function Products() {
-  const [products, setProducts] = useState([]);
+  const products = PRODUCTS;
   const [filter, setFilter] = useState("All");
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    fetchProducts().then((d) => { setProducts(d); setLoading(false); }).catch(() => setLoading(false));
-  }, []);
 
   const categories = ["All", ...Array.from(new Set(products.map((p) => p.category)))];
   const visible = filter === "All" ? products : products.filter((p) => p.category === filter);
@@ -52,8 +47,8 @@ export default function Products() {
           ))}
         </div>
 
-        {loading ? (
-          <div className="mt-16 text-center font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground">Loading catalogue…</div>
+        {visible.length === 0 ? (
+          <div className="mt-16 text-center font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground">No products in this category.</div>
         ) : (
           <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-border">
             {visible.map((p, i) => (
