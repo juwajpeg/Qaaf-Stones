@@ -9,6 +9,7 @@ import Process from "@/pages/Process";
 import Certifications from "@/pages/Certifications";
 import Contact from "@/pages/Contact";
 import RFQ from "@/pages/RFQ";
+import Learn from "@/pages/Learn";
 import { Toaster } from "@/components/ui/sonner";
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
             <Route path="/certifications" element={<Certifications />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/rfq" element={<RFQ />} />
+            <Route path="/learn" element={<Learn />} />
           </Routes>
         </Layout>
       </BrowserRouter>

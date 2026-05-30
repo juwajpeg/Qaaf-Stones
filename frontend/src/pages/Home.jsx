@@ -50,7 +50,7 @@ export default function Home() {
           <h1 className="qs-fade qs-fade-d1 mt-6 font-serif font-light tracking-[-0.02em] text-foreground text-[clamp(3rem,9vw,9.5rem)] leading-[0.92]">
             <span className="text-[#E07A5F]">ق</span> stones.
             <br />
-            <span className="text-foreground/85">Pink salt,</span>
+            <span className="text-foreground/85">Himalayan Pink salt,</span>
             <br />
             <span className="italic text-foreground/70">exported with intent.</span>
           </h1>
