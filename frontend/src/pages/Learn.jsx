@@ -10,7 +10,7 @@ import Section from "@/components/Section";
 
 /* ---------- Data ---------- */
 const COMPOSITION = [
-  { mineral: "Sodium Chloride (NaCl)", value: "98.0 – 99.2%", note: "Base salinity" },
+  { mineral: "Sodium Chloride (NaCl)", value: "98.0 – 99.2%", note: "Base salinity, Lower than traditional salts" },
   { mineral: "Sulfate (SO₄²⁻)", value: "≤ 0.5%", note: "Trace" },
   { mineral: "Calcium (Ca)", value: "0.10 – 0.40%", note: "Trace" },
   { mineral: "Iron (Fe)", value: "0.05 – 0.50%", note: "Source of pink colour" },
@@ -71,7 +71,7 @@ const COMPARISON = [
   },
   {
     attr: "Best for",
-    himalayan: "Finishing, gourmet, salt-blocks, wellness",
+    himalayan: "Daily cooking, finishing, gourmet, salt-blocks, wellness, therapy",
     table: "Industrial baking, daily cooking",
     sea: "Cooking, finishing",
     celtic: "Finishing, gourmet",
@@ -113,23 +113,23 @@ const MYTHS = [
   },
   {
     myth: "It cures dehydration / detoxes the body.",
-    fact: "There is no peer-reviewed evidence that pink salt detoxifies anything. Hydration is governed by water + electrolyte balance, not salt type.",
+    fact: "Hydration is governed by water + electrolyte balance, not salt type.",
   },
   {
     myth: "Pink salt is 'healthier' than table salt.",
-    fact: "Sodium chloride is sodium chloride. Daily intake limits set by the WHO apply equally to all salts. Pink salt is purer and additive-free — that is its real edge, not a magical health profile.",
+    fact: "Pink salt is purer and additive-free — that is its real edge, Its larger crystal structure also means slightly less sodium by volume per gram compared to fine table salt.",
   },
   {
     myth: "It boosts energy and sleep.",
-    fact: "Anecdotal at best. The trace mineral quantities are far below any dose shown to affect energy metabolism or sleep architecture.",
+    fact: "Evidence remains anecdotal. The trace mineral quantities are far below any dose shown to affect energy metabolism or sleep architecture.",
   },
   {
     myth: "Salt lamps purify air.",
-    fact: "Pleasant ambient lighting — yes. Air ionising effect — minimal to none under normal room conditions. The wellness benefit is psychological and aesthetic, not chemical.",
+    fact: "Halotherapy where aerosolized salt particles are actively inhaled in clinical settings has documented respiratory benefits, but this is often confused with simply placing a salt lamp in a room. That has no meaningful air purification effect; the hygroscopic and ionizing effects are too small to matter at room scale. ",
   },
   {
-    myth: "All pink salt is from Pakistan.",
-    fact: "True Himalayan pink salt is from the Khewra Salt Range in Pakistan. Some imitators source pink-tinted salt from Iran, Poland or the Andes and label it 'Himalayan'.",
+    myth: "All pink salt is from Himalaya.",
+    fact: "True Himalayan pink salt is not Himalayan at all. It originates exclusively from the Khewra Salt Range in Pakistan, but the label gets stretched in two directions: some producers apply it to pink-tinted salt from Poland or the Andes, while others India most notably simply buy genuine Pakistani salt, repackage it, and sell it as their own Himalayan product.",
   },
 ];
 
@@ -213,7 +213,7 @@ export default function Learn() {
         <div className="relative max-w-[1480px] mx-auto px-6 md:px-10 pb-20 md:pb-28 w-full">
           <div className="overline qs-fade">// Pink Salt · 101</div>
           <h1 className="qs-fade qs-fade-d1 mt-6 font-serif font-light tracking-[-0.02em] text-[clamp(2.5rem,7vw,7rem)] leading-[0.95]">
-            What pink salt<br />
+            What <span className="text-[#E07A5F]">pink salt</span><br />
             <span className="italic text-foreground/75">actually is.</span>
           </h1>
           <p className="qs-fade qs-fade-d2 mt-8 max-w-2xl text-foreground/80 text-base md:text-lg leading-relaxed">
@@ -224,7 +224,7 @@ export default function Learn() {
       </section>
 
       {/* OVERVIEW */}
-      <Section eyebrow="// Chapter 01" title="The 30-second overview.">
+      <Section eyebrow="// Chapter 01" title="A Quick Overview.">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-10">
           <div className="md:col-span-7 space-y-6 text-foreground/80 leading-relaxed text-base md:text-lg">
             <p>
@@ -262,7 +262,7 @@ export default function Learn() {
                 ["Age of deposit", "~250 million years"],
                 ["Location", "Khewra, Punjab, Pakistan"],
                 ["Colour cause", "Trace iron oxide"],
-                ["NaCl content", "98 – 99.2%"],
+                ["NaCl content", "98 – 99.2% (lower than traditional salts)"],
                 ["Iodine", "None (natural)"],
                 ["Microplastics", "None"],
                 ["Shelf life", "Indefinite"],
@@ -282,7 +282,7 @@ export default function Learn() {
       {/* MINERAL COMPOSITION */}
       <section className="border-y border-border bg-[#0A0909]">
         <div className="max-w-[1480px] mx-auto px-6 md:px-10 py-20 md:py-28">
-          <SectionTitle eyebrow="// Chapter 02" title="What's actually inside." />
+          <SectionTitle eyebrow="// Chapter 02" title="What's inside." />
           <p className="mt-6 max-w-3xl text-foreground/70 leading-relaxed">
             Typical chemistry of Khewra pink salt. Trace minerals are present in
             biologically negligible quantities — they explain the colour and the
@@ -364,7 +364,7 @@ export default function Learn() {
       {/* BENEFITS */}
       <section className="border-t border-border bg-[#141212]">
         <div className="max-w-[1480px] mx-auto px-6 md:px-10 py-20 md:py-28">
-          <SectionTitle eyebrow="// Chapter 04 · Scientifically grounded" title="What pink salt actually does well." />
+          <SectionTitle eyebrow="// Chapter 04 · Scientifically grounded" title="What pink salt does well." />
           <p className="mt-6 max-w-3xl text-foreground/70 leading-relaxed">
             Below are the benefits with peer-reviewed or industry-standard backing.
             Everything else you read about pink salt online — please assume marketing.
@@ -388,7 +388,7 @@ export default function Learn() {
       </section>
 
       {/* MYTHS VS FACTS */}
-      <Section eyebrow="// Chapter 05 · Marketing vs reality" title="Myths and facts — straight.">
+      <Section eyebrow="// Chapter 05 · Marketing vs reality" title="Myths and facts.">
         <p className="mt-2 max-w-3xl text-foreground/70 leading-relaxed">
           We sell pink salt for a living, and we still think it's worth being honest about what it isn't.
         </p>
@@ -419,7 +419,7 @@ export default function Learn() {
       {/* CULINARY & PRACTICAL USES */}
       <section className="border-t border-border">
         <div className="max-w-[1480px] mx-auto px-6 md:px-10 py-20 md:py-28">
-          <SectionTitle eyebrow="// Chapter 06" title="Where it actually shines." />
+          <SectionTitle eyebrow="// Chapter 06" title="Best for :" />
           <div className="mt-14 grid grid-cols-1 md:grid-cols-3 gap-px bg-border">
             {USES.map((u, i) => (
               <div key={u.t} className="bg-[#0A0909] p-8 hover-shift">
