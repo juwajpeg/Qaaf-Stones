@@ -8,7 +8,7 @@ const INDUSTRIAL_IMG = "https://static.prod-images.emergentagent.com/jobs/48fe1f
 const STATS = [
   { k: "98.6%", l: "NaCl Purity" },
   { k: "84+", l: "Trace Minerals" },
-  { k: "40+", l: "Countries Served" },
+  { k: "Authentic", l: "1 Origin" },
   { k: "MT/Mo", l: "Capacity 12,000" },
 ];
 
@@ -46,18 +46,16 @@ export default function Home() {
         />
         <div className="absolute inset-0 bg-gradient-to-t from-[#0A0909] via-[#0A0909]/65 to-[#0A0909]/30" />
         <div className="relative max-w-[1480px] mx-auto px-6 md:px-10 pb-20 md:pb-28 w-full">
-          <div className="overline qs-fade">Khewra · Punjab · Pakistan — Est. Hand-mined</div>
+          <div className="overline qs-fade">Khewra · Punjab · Pakistan — The Only Source on Earth</div>
           <h1 className="qs-fade qs-fade-d1 mt-6 font-serif font-light tracking-[-0.02em] text-foreground text-[clamp(3rem,9vw,9.5rem)] leading-[0.92]">
             <span className="text-[#E07A5F]">ق</span> stones.
             <br />
             <span className="text-foreground/85">Himalayan Pink salt,</span>
             <br />
-            <span className="italic text-foreground/70">exported with intent.</span>
+            <span className="italic text-foreground/70 text-[0.55em]">"from the only mountain that has it."</span>
           </h1>
           <div className="qs-fade qs-fade-d2 mt-10 max-w-xl text-foreground/80 text-base md:text-lg leading-relaxed">
-            We supply the world&apos;s finest Himalayan pink salt — sourced from
-            the 250-million-year-old Khewra mine, processed cleanly, packaged to
-            your private label, and shipped FOB Karachi to forty countries.
+            Every grain of Himalayan pink salt on the planet originates from a single mountain in Punjab, Pakistan. No other mine. No other country. No substitute. We are at that mountain and we ship directly from it to your door.
           </div>
           <div className="qs-fade qs-fade-d3 mt-10 flex flex-col sm:flex-row gap-3">
             <Link
@@ -102,14 +100,14 @@ export default function Home() {
           </div>
           <div className="md:col-span-8">
             <h2 className="font-serif text-4xl md:text-6xl leading-[1.02] tracking-tight">
-              We are not a trading desk. We are a single mineral, taken seriously.
+              Pink Salt has one origin. We are at it.
             </h2>
             <p className="mt-8 text-foreground/75 text-base md:text-lg leading-relaxed max-w-3xl">
               Qaaf Stones is built on one belief — that pink salt deserves the same
               rigour as fine wine or single-origin coffee. We do not blend, broker
-              or trade through middlemen. Every container we ship is taken
-              <span className="text-[#E07A5F] italic"> straight from the source</span> —
-              the Khewra mine — to your port.
+              or trade through middlemen. Every container we ship is taken {" "}
+              <Link to="/about" className="text-[#E07A5F] italic hover:underline">
+              straight from the source </Link>
             </p>
             <Link
               to="/about"

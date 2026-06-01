@@ -108,10 +108,6 @@ const BENEFITS = [
 
 const MYTHS = [
   {
-    myth: "Pink salt contains 84 essential minerals.",
-    fact: "It contains traces of ~10–12 minerals at percentages below 0.5% combined. The 84-minerals claim is folklore — and even if true, the doses would be biologically irrelevant.",
-  },
-  {
     myth: "It cures dehydration / detoxes the body.",
     fact: "Hydration is governed by water + electrolyte balance, not salt type.",
   },
